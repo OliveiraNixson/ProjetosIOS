@@ -71,7 +71,9 @@ struct IntroView: View {
         }
     }
     
-    func start() {}
+    func start() {
+        UserViewModel.shared.loggedInUser!.progress += 1
+    }
 }
 
 

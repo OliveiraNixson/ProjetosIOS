@@ -28,6 +28,7 @@
 		407B2A092EDFAC3600A422A9 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B2A082EDFAC3600A422A9 /* IntroView.swift */; };
 		407B2A0B2EDFB75300A422A9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B2A0A2EDFB75300A422A9 /* User.swift */; };
 		407B2A132EE4499200A422A9 /* userViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B2A122EE4499200A422A9 /* userViewModel.swift */; };
+		DD45C1D72EEA3834007B29FE /* DayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD45C1D62EEA3834007B29FE /* DayComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		407B2A082EDFAC3600A422A9 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		407B2A0A2EDFB75300A422A9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		407B2A122EE4499200A422A9 /* userViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userViewModel.swift; sourceTree = "<group>"; };
+		DD45C1D62EEA3834007B29FE /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				407B29E52ED505F400A422A9 /* LoginView.swift */,
 				407B29E92ED5063600A422A9 /* RegistrationView.swift */,
 				407B29EB2ED5065E00A422A9 /* HomeView.swift */,
+				DD45C1D62EEA3834007B29FE /* DayComponent.swift */,
 				407B29EE2ED5070A00A422A9 /* SettingsView.swift */,
 				407B29F02ED5071B00A422A9 /* UserView.swift */,
 				407B2A042EDFABC100A422A9 /* ActivityView.swift */,
@@ -238,6 +241,7 @@
 				407B29FF2EDFAAF900A422A9 /* Module.swift in Sources */,
 				407B2A132EE4499200A422A9 /* userViewModel.swift in Sources */,
 				407B29F12ED5071B00A422A9 /* UserView.swift in Sources */,
+				DD45C1D72EEA3834007B29FE /* DayComponent.swift in Sources */,
 				407B2A012EDFAB1C00A422A9 /* Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

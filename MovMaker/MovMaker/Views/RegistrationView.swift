@@ -13,7 +13,7 @@ struct RegistrationView: View {
     @Environment(\.modelContext) var contexto
     @StateObject var user: UserViewModel
     init() {
-            _user = StateObject(wrappedValue: UserViewModel())
+        _user = StateObject(wrappedValue: UserViewModel.shared)
         }
     var body: some View {
         VStack(spacing: 100) {

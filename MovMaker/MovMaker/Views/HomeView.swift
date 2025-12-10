@@ -39,16 +39,7 @@ struct HomeView: View {
                         
                         ForEach(1..<8){ i in
                             NavigationLink(destination: page.screenType(for: .intro) ){
-                                ZStack{
-                                    Circle()
-                                        .frame(width: 80)
-                                        .foregroundColor(.blue)
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.white)
-                                        .font(.title)
-                                        .bold()
-                                }
-                                .padding()
+                                DayComponent(dayNumber: i)
                             }
                                     Text("Aula \(i)")
                                 

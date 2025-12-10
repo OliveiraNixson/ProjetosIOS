@@ -8,7 +8,9 @@
 import Foundation
 import SwiftData
 
-class UserViewModel: ObservableObject{
+class UserViewModel: ObservableObject {
+    
+    static var shared: UserViewModel = UserViewModel()
     
     @Published var name: String = ""
     @Published var email: String = ""
@@ -18,6 +20,8 @@ class UserViewModel: ObservableObject{
     @Published var loggedInUser: User?  = nil
     @Published var errorMessage: String?
     @Published var users: [User] = []
+    
+    private init() {}
 
     func login(context: ModelContext){
         
@@ -107,5 +111,9 @@ class UserViewModel: ObservableObject{
     
     func getUser(){
         
+    }
+    
+    static func getShared() -> UserViewModel {
+        return shared
     }
 }
