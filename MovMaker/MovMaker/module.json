@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "title": "Introdução ao Movimento",
+    "days": [
+      {
+        "id": 1,
+        "introVideoURL": "https://meuservidor.com/videos/intro1.mp4",
+        "pages": [
+          {
+            "id": 1,
+            "type": "intro",
+            "title": "O que é Movimento?",
+            "content": "Neste dia você aprenderá o conceito fundamental de movimento.",
+            "info": null,
+            "photo": null,
+            "video": null
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "introVideoURL": "https://meuservidor.com/videos/intro2.mp4",
+        "pages": [
+          {
+            "id": 1,
+            "type": "content",
+            "title": "Componentes Mecânicos",
+            "content": null,
+            "info": "Veja os principais componentes envolvidos nos mecanismos.",
+            "photo": "componentes.png",
+            "video": null
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "introVideoURL": "https://meuservidor.com/videos/intro3.mp4",
+        "pages": [
+          {
+            "id": 1,
+            "type": "activity",
+            "title": "Demonstração Prática",
+            "content": null,
+            "info": null,
+            "photo": null,
+            "video": "demo_movimento.mp4"
+          }
+        ]
+      }
+    ]
+  }
+]
