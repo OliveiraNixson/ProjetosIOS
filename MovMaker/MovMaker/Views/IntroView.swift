@@ -9,7 +9,10 @@ import SwiftUI
 import AVKit
 
 struct IntroView: View {
+    @Environment(\.dismiss) private var dismiss
+
     let page: Page
+    let user: User
     
     var body: some View {
         NavigationStack {
@@ -24,7 +27,10 @@ struct IntroView: View {
                     .padding(.horizontal)
                 
                 Group {
-                    if false {
+                    if let videoID = page.video {
+                        VideoView(videoID: videoID)
+                            .frame(height: 300)
+                            .padding()
                         
                     } else {
                         ZStack{
@@ -47,31 +53,53 @@ struct IntroView: View {
                 
                 Text(page.title ?? "No Title")
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(.blue)
                     .padding(.leading, 30)
                     .font(.title)
-                    .bold()
+                    
                 Text(page.content ?? "No content")
                     .frame(maxWidth:.infinity, alignment: .leading)
+                    .foregroundColor(.blue)
                     .padding(.leading, 30)
                     .padding(.top, 10)
                 
                 Spacer()
                 
-                Button(action: start) {
+                Button {
+                    setProgress()
+                }
+            label: {
+//                            RoundedRectangle(cornerRadius: 8)
+//                                .background(Color.gray)
+//                                .foregroundColor(.white)
+//                                .overlay {
+//                                    Text("Entrar")
+//                                        .foregroundColor(.white)
+//                                }
+                    
                     Text("Começar Módulo")
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.gray)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                        .padding(.horizontal)
+                        .background {
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundStyle(.blue)
+                        }
+                    
                 }
-                .padding(.bottom, 20)
+                .padding()
+                .disabled(user.progress >= (page.id - 1))
+                
             }
         }
     }
     
-    func start() {}
+    func setProgress() {
+        user.progress += 1
+        dismiss()
+    }
 }
 
 

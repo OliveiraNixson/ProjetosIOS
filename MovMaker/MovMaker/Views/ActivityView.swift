@@ -10,7 +10,10 @@
 import SwiftUI
 
 struct ActivityView: View {
+    @Environment(\.dismiss) private var dismiss
+
     let page: Page
+    let user: User
     var body: some View {
         NavigationStack {
             VStack {
@@ -38,23 +41,26 @@ struct ActivityView: View {
                 Spacer()
                 
                 VStack(spacing: 15) {
-                    Button(action: start) {
+                    Button(action: download ) {
                         Text("Baixar Atividade")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.gray)
                             .foregroundColor(.white)
                             .cornerRadius(8)
                             .padding(.horizontal)
                     }
                     
-                    Button(action: start) {
+                    Button(action: setProgress) {
                         Text("Marcar como Concluído")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.gray)
+                            .background(Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.blue , lineWidth: 3)
+                            )
                             .padding(.horizontal)
                     }
                 }
@@ -63,7 +69,13 @@ struct ActivityView: View {
         }
     }
     
-    func start() {}
+    func setProgress(){
+        user.progress += 1
+        dismiss()
+    }
+    func download(){
+        
+    }
 }
 
 

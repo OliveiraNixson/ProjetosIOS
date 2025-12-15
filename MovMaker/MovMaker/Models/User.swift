@@ -11,7 +11,6 @@ import SwiftData
 
 @Model
 class User: Identifiable{
-    var id : UUID
     var name: String
     var email: String
     var age: Int
@@ -19,10 +18,10 @@ class User: Identifiable{
     var progress: Int = 0
     
     init( name: String, email: String, age: Int, password: String) {
-        self.id = UUID()
         self.name = name
         self.email = email
         self.age = age
         self.password = password
     }
+    
 }

@@ -7,12 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @StateObject private var viewModel = UserViewModel()
-    
+struct ContentView: View {    
     var body: some View {
-        LoginView()
-      
+        LoginView2()
     }
 }
 

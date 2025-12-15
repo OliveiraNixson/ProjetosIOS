@@ -1,27 +1,28 @@
 //
-//  userViewModel.swift
+//  userViewModel2.swift
 //  MovMaker
 //
-//  Created by iredefbmac_30 on 06/12/25.
+//  Created by iredefbmac_30 on 13/12/25.
 //
+
+
 
 import Foundation
 import SwiftData
 
-class UserViewModel: ObservableObject{
+class UserViewModel2: ObservableObject {
     
-    static var shared: UserViewModel = UserViewModel()
+    static var shared: UserViewModel2 = UserViewModel2()
     
     @Published var name: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String?
     @Published var age:Int = 10
-    @Published var loggedUser: User?  = nil
+    @Published var loggedInUser: User?  = nil
     @Published var errorMessage: String?
     @Published var users: [User] = []
     
-    init(){}
 
     func login(context: ModelContext){
         
@@ -42,7 +43,7 @@ class UserViewModel: ObservableObject{
         do {
             if let user = try context.fetch(descriptor).first{
                 if user.password == password {
-                    loggedUser = user
+                    loggedInUser = user
                     errorMessage = ""
                                 
                 } else {
@@ -106,14 +107,22 @@ class UserViewModel: ObservableObject{
     }
     
     func logout(){
-        
+        loggedInUser = nil
+        email = ""
+        password = ""
     }
     
+    func fakeLogin(contexto : ModelContext){
+        let newUser = User(name: "default", email: "default@emailcom", age: 99, password: "123")
+        contexto.insert(newUser)
+        try? contexto.save()
+        loggedInUser = newUser
+    }
     func getUser(){
         
     }
     
-    static func getShared() -> UserViewModel{
+    static func getShared() -> UserViewModel2 {
         return shared
     }
 }

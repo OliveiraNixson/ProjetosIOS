@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct ContentPageView: View {
+    @Environment(\.dismiss) private var dismiss
+
     let page: Page
+    let user: User
     var body: some View {
         NavigationStack {
             VStack {
@@ -58,11 +61,11 @@ struct ContentPageView: View {
                 .padding(.horizontal, 30)
                 
                 
-                Button(action: start) {
+                Button(action: setProgress) {
                     Text("Marcar Como Concluído")
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.gray)
+                        .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(8)
                         .padding(.horizontal)
@@ -72,7 +75,10 @@ struct ContentPageView: View {
         }
     }
     
-    func start() {}
+    func setProgress() {
+        user.progress += 1
+        dismiss()
+    }
 }
 
 
