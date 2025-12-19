@@ -9,6 +9,7 @@ import Foundation
 
 struct Module: Codable, Identifiable{
     let id: Int
+    let week: Int
     let title: String
-    let days: [Day]
+    let days: [Int]
 }

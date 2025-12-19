@@ -9,59 +9,29 @@ import Foundation
 import SwiftUI
 
 struct HomeView: View {
-    @State private var range = 0...5
-    @StateObject var page : PageViewModel
-    
-    //let module: [Module] = Bundle.main.decode("module.json")
-    
-    init() {
-            _page = StateObject(wrappedValue: PageViewModel())
-        }
+    let modules: [Module] = Bundle.main.decode("modules.json")
+    @Bindable var user: User
     var body: some View {
-        NavigationStack{
-            ScrollView{
-                ForEach(range, id: \.self){ item in
-                    LazyVStack{
-                        Divider()
-                            .frame(height: 20)
-                        Text("Semana \(item)")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(10)
-                            .bold()
-                        Text("Modulo \(item + 1) ")
-                            .foregroundColor(.white)
-                            .font(.title3)
-                            .bold()
-                            .frame(maxWidth: .infinity, maxHeight: 50, alignment: .center)
-                            .background(Color.blue)
-                            .cornerRadius(5)
-                            .padding(.horizontal, 20)
-                        
-                        ForEach(1..<8){ i in
-                            NavigationLink(destination: page.screenType(for: .intro) ){
-                                ZStack{
-                                    Circle()
-                                        .frame(width: 80)
-                                        .foregroundColor(.blue)
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.white)
-                                        .font(.title)
-                                        .bold()
-                                }
-                                .padding()
-                            }
-                                    Text("Aula \(i)")
-                                
-                            
-                        }
-                    }
+        ScrollView{
+            ForEach(modules){ module in
+                ModuleView(module: module,current_user: user)
+            }
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading){
+                    Text("Início")
+                        .font(.largeTitle)
+                        .foregroundStyle(Color(
+                            red: 0.95,
+                            green: 0.7,
+                            blue: 0.1
+                        ))
+                        .bold()
+                    Divider()
+                        .frame(maxWidth: .infinity, maxHeight: 10)
+                        .padding(.horizontal, 10)
                 }
-                .navigationTitle("Início")
             }
         }
     }
 }
 
-#Preview {
-    HomeView()
-}

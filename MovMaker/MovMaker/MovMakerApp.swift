@@ -13,5 +13,6 @@ struct MovMakerApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: User.self)
     }
 }

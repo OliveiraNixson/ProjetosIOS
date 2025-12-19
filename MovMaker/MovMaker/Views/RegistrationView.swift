@@ -9,12 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct RegistrationView: View {
-    @State private var confirmPassword: String = ""
-    @Environment(\.modelContext) var contexto
-    @StateObject var user: UserViewModel
-    init() {
-            _user = StateObject(wrappedValue: UserViewModel())
-        }
+    @Environment(\.modelContext) private var context
+    
+    @StateObject var user: UserViewModel2
+
     var body: some View {
         VStack(spacing: 100) {
             
@@ -60,7 +58,11 @@ struct RegistrationView: View {
                         )
                         .padding(.horizontal)
                     
-                    SecureField("Confirme a Senha", text: $user.password)
+                    SecureField("Confirme a Senha", text: Binding(
+                        get: {user.confirmPassword ?? ""},
+                        set:{ user.confirmPassword = $0}
+                    )
+                    )
                         .padding()
                         .textInputAutocapitalization(.never)
                         .overlay(
@@ -70,38 +72,24 @@ struct RegistrationView: View {
                         .padding(.horizontal)
                 }
                 
-                Button("Registrar") {
-                    user.register(context: contexto)
+                NavigationLink(destination: LoginView2()){
+                    Button("Registrar") {
+                        user.register(context: context)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.gray)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+                    .padding(.horizontal)       
+                    
                 }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.gray)
-                .foregroundColor(.white)
-                .cornerRadius(8)
-                .padding(.horizontal)            }
-            
-            Button("Google") {
-                register()
             }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.white)
-            .foregroundColor(.black)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.black, lineWidth: 1)
-            )
-            .padding(.horizontal)        }
+                  
+        }
     }
     
-    func register() {
-        // lógica futura
-    }
 }
 
-#Preview {
-    RegistrationView()
-}
 
 
