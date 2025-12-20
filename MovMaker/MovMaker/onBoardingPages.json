@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "title": "Bem-vindo ao MovMaker",
+      "description": "Estamos felizes em ter você por aqui. Vamos começar te apresentando como funciona nosso app de forma simples e rápida.",
+      "image": "onBoarding1"
+    },
+    {
+      "id": 2,
+      "title": "21 Dias de aula",
+      "description": "Serão 21 dias para assistir aulas e realizar atividades Maker propostas na plataforma.",
+      "image": "onBoarding2"
+    },
+    {
+      "id": 3,
+      "title": "Acesse quando puder",
+      "description": "O ideal é acompanhar os 21 dias de forma corrida, mas se não conseguir, você pode continuar de onde parou!",
+      "image": "onBoarding3"
+    }
+]
+

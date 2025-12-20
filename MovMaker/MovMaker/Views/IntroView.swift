@@ -1,78 +1,93 @@
-//
-//  WellcomeView.swift
-//  MovMaker
-//
-//  Created by iredefbmac_30 on 24/11/25.
-//
-
 import SwiftUI
-import AVKit
+import WebKit
 
 struct IntroView: View {
+    @Environment(\.dismiss) private var dismiss
+
     let page: Page
+    let user: User
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                Text("Seja Bem-Vindo!")
-                    .font(.title)
-                    .bold()
-                
-                Divider()
-                    .frame(height: 1)
-                    .background(Color.gray)
-                    .padding(.horizontal)
-                
-                Group {
-                    if false {
-                        
-                    } else {
-                        ZStack{
-                            Rectangle()
-                                .fill(Color.gray.opacity(0.3))
-                                .frame(height: 300)
-                                .cornerRadius(10)
-                            
-                            Image(systemName: "play")
-                                .font(.title)
-                                .background(.black)
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .cornerRadius(10)
-                        }
+        VStack(spacing: 24) {
+
+            Text("Seja Bem-Vindo!")
+                .foregroundColor(Color(
+                    red: 0.95,
+                    green: 0.7,
+                    blue: 0.1
+                ))
+                .font(.title)
+                .bold()
+                .frame(maxWidth: .infinity)
+                .padding(.top, 24)
+
+            Divider()
+                .padding(.horizontal)
+
+            Group {
+                if let videoID = page.video {
+                    VideoView(videoID: videoID)
+                        .frame(height: 200)
+                        .cornerRadius(10)
+                } else {
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(height: 200)
+                            .cornerRadius(10)
+
+                        Image(systemName: "play.fill")
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .padding(12)
+                            .background(Color.black.opacity(0.7))
+                            .cornerRadius(10)
                     }
                 }
-                .padding(.horizontal, 30)
-                .padding(.top, 30)
-                
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 16)
+
+            VStack(alignment: .leading, spacing: 12) {
                 Text(page.title ?? "No Title")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 30)
                     .font(.title)
                     .bold()
+
                 Text(page.content ?? "No content")
-                    .frame(maxWidth:.infinity, alignment: .leading)
-                    .padding(.leading, 30)
-                    .padding(.top, 10)
-                
-                Spacer()
-                
-                Button(action: start) {
-                    Text("Começar Módulo")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.gray)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                        .padding(.horizontal)
-                }
-                .padding(.bottom, 20)
+                    .font(.body)
             }
+            .foregroundColor(.black)
+            .padding(.horizontal, 20)
+
+            Spacer(minLength: 20)
+
+            Button {
+                setProgress()
+            } label: {
+                Text("Começar Módulo")
+                    .font(.title2)
+                    .bold()
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundStyle(Color(
+                                red: 0.95,
+                                green: 0.7,
+                                blue: 0.1
+                            ))
+                    )
+            }
+            .padding(.horizontal)
+            .padding(.bottom, 24)
+            .disabled(user.progress >= page.id)
         }
     }
-    
-    func start() {}
+
+    func setProgress() {
+        user.progress += 1
+        dismiss()
+    }
 }
-
-
 
